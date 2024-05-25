@@ -1,0 +1,17 @@
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Linq.Expressions;
+global using System.Security.Claims;
+global using System.Text;
+global using System.Threading;
+global using Application.DTOs;
+global using Application.Interfaces;
+global using Domain.Common;
+global using Domain.Entities;
+global using Infrastructure.Persistence;
+global using Infrastructure.Repositories;
+global using Infrastructure.Services;
+global using MapsterMapper;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.IdentityModel.Tokens;
+global using MongoDB.Driver;
