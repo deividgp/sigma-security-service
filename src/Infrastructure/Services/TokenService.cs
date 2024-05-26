@@ -23,7 +23,7 @@ public class TokenService(
         [
             new(ClaimTypes.Sid, userCredential.Id.ToString()),
             new(ClaimTypes.Email, userCredential.Email),
-            new(ClaimTypes.Name, userCredential.Email),
+            new(ClaimTypes.Name, userCredential.Username),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         ];
 
