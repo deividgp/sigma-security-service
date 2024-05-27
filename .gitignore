@@ -365,3 +365,5 @@ FodyWeavers.xsd
 # Docker SQL Server Data
 docker/dev/sqlserver-data/*
 !docker/dev/sqlserver-data/.gitignore
+
+appsettings.Production.json
