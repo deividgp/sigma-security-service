@@ -24,6 +24,7 @@ public class TokenService(
             new(ClaimTypes.Sid, userCredential.Id.ToString()),
             new(ClaimTypes.Email, userCredential.Email),
             new(ClaimTypes.Name, userCredential.Username),
+            new(ClaimTypes.NameIdentifier, userCredential.Username),
             new(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         ];
 
@@ -90,8 +91,9 @@ public class TokenService(
             var userId = jwtToken.Claims.First(x => x.Type.Contains("sid")).Value;
             var userEmail = jwtToken.Claims.First(x => x.Type.Contains("emailaddress")).Value;
             var userName = jwtToken.Claims.First(x => x.Type.Contains("name")).Value;
+            var nameId = jwtToken.Claims.First(x => x.Type.Contains("nameidentifier")).Value;
 
-            if (userId == null || userEmail == null || userName == null)
+            if (userId == null || userEmail == null || userName == null || nameId == null)
             {
                 return Task.FromResult(false);
             }
