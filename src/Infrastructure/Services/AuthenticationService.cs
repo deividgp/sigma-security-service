@@ -21,13 +21,13 @@ public class AuthenticationService(
         List<UserCredential> credentialList =
         [
             .. (
-            await _userCredentialRepository.GetAllAsync(u =>
-                (
-                    u.Username == userCredential.UsernameEmail
-                    || u.Email == userCredential.UsernameEmail
+                await _userCredentialRepository.GetAllAsync(u =>
+                    (
+                        u.Username == userCredential.UsernameEmail
+                        || u.Email == userCredential.UsernameEmail
+                    )
                 )
             )
-        )
         ];
 
         UserCredential? auxCredential = credentialList
@@ -41,7 +41,7 @@ public class AuthenticationService(
             )
             .SingleOrDefault();
 
-        return auxCredential == null ? null : await Authenticate(auxCredential.Id);
+        return auxCredential is null ? null : await Authenticate(auxCredential.Id);
     }
 
     public async Task<TokenData> RefreshToken(string token, string refreshToken)

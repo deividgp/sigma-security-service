@@ -31,9 +31,9 @@ public abstract class Entity<TId> : IEntity<TId>
         return Id.Equals(other.Id);
     }
 
-    //public static bool operator ==(Entity<TId> a, Entity<TId> b) => a.Equals(b);
+    public static bool operator ==(Entity<TId> a, Entity<TId> b) => a.Equals(b);
 
-    //public static bool operator !=(Entity<TId> a, Entity<TId> b) => !(a == b);
+    public static bool operator !=(Entity<TId> a, Entity<TId> b) => !(a == b);
 
     public override int GetHashCode() => throw new NotImplementedException();
 }

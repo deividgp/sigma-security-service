@@ -20,13 +20,13 @@ public class AuthenticationController(
     {
         var result = await _authenticationService.LogIn(userCredential);
 
-        return result == null ? NotFound() : Ok(result);
+        return result is null ? NotFound() : Ok(result);
     }
 
     [HttpPost("/api/Auth/RefreshToken")]
     public async Task<ActionResult> RefreshToken(string refreshToken)
     {
-        if (refreshToken == null)
+        if (refreshToken is null)
             return BadRequest();
 
         if (string.IsNullOrEmpty(Request.Headers.Authorization))

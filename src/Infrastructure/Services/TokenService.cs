@@ -16,7 +16,7 @@ public class TokenService(
     {
         UserCredential? userCredential = await _userCredentialRepository.GetByIdAsync(userId);
 
-        if (userCredential == null)
+        if (userCredential is null)
             return null;
 
         List<Claim> claims =
@@ -93,7 +93,7 @@ public class TokenService(
             var userName = jwtToken.Claims.First(x => x.Type.Contains("name")).Value;
             var nameId = jwtToken.Claims.First(x => x.Type.Contains("nameidentifier")).Value;
 
-            if (userId == null || userEmail == null || userName == null || nameId == null)
+            if (userId is null || userEmail is null || userName is null || nameId is null)
             {
                 return Task.FromResult(false);
             }
@@ -118,7 +118,7 @@ public class TokenService(
             x.UserId == userId
         );
 
-        if (refreshT == null)
+        if (refreshT is null)
         {
             return false;
         }
@@ -149,7 +149,7 @@ public class TokenService(
             );
             var jwtRefreshToken = (JwtSecurityToken)tokenValidated;
 
-            if (tokenValidated == null)
+            if (tokenValidated is null)
             {
                 return false;
             }
