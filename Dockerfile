@@ -11,4 +11,4 @@ WORKDIR /App
 COPY --from=build-env /App/out .
 ENTRYPOINT ["dotnet", "API.dll"]
 
-EXPOSE 8080
+EXPOSE 7073
